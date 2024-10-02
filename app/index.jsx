@@ -1,12 +1,14 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const index = () => {
+const App = () => {
   return (
-    <View>
-      <Text>Welcome to BayMax</Text>
+    <View className="flex items-center justify-center h-full">
+      <Text className="text-red-500 text-3xl font-bold ">
+        Welcome to BayMax
+      </Text>
     </View>
   );
 };
 
-export default index;
+export default App;
