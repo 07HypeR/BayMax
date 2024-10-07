@@ -4,11 +4,11 @@ import { router } from "expo-router";
 
 const SplashScreen = () => {
   return (
-    <TouchableOpacity
-      onPress={() => router.push("/BaymaxScreen")}
-      className="flex-1 items-center justify-center ">
-      <Text>SplashScreen</Text>
-    </TouchableOpacity>
+    <View className="flex-1 items-center justify-center ">
+      <TouchableOpacity onPress={() => router.push("/BaymaxScreen")}>
+        <Text>SplashScreen</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
