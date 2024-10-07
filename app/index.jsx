@@ -4,9 +4,9 @@ import { router } from "expo-router";
 
 const SplashScreen = () => {
   return (
-    <View className="flex-1 items-center justify-center ">
+    <View className="flex-1 items-center justify-center  bg-primary">
       <TouchableOpacity onPress={() => router.replace("/BaymaxScreen")}>
-        <Text>SplashScreen</Text>
+        <Text className="text-2xl font-Theme">SplashScreen</Text>
       </TouchableOpacity>
     </View>
   );
