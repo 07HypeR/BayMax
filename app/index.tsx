@@ -1,27 +1,72 @@
 import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
-import React from "react";
+import React, { FC, useEffect } from "react";
 import { router } from "expo-router";
-import Animated from "react-native-reanimated";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
 import { Colors, Fonts, lightColors } from "@/utils/Constants";
 import { screenHeight, screenWidth } from "@/utils/Scaling";
 import { LinearGradient } from "expo-linear-gradient";
 import CustomText from "@/components/global/CustomText";
 import LottieView from "lottie-react-native";
+import { initializeTtsListeners } from "@/utils/ttsListeners";
+import Tts from "react-native-tts";
 
 const bottomColors = [...lightColors].reverse();
-const SplashScreen = () => {
+const SplashScreen: FC = () => {
+  const baymaxAnimation = useSharedValue(screenHeight * 0.8);
+  const messageContainerAnimation = useSharedValue(screenHeight * 0.8);
+
+  const launchAnimation = async () => {
+    messageContainerAnimation.value = screenHeight * 0.001;
+    setTimeout(() => {
+      baymaxAnimation.value = -screenHeight * 0.02;
+      Tts.speak("Hello World! I am Baymax.");
+    }, 600);
+  };
+
+  useEffect(() => {
+    initializeTtsListeners();
+    launchAnimation();
+  }, []);
+
+  const animateImageStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateY: withTiming(baymaxAnimation.value, {
+            duration: 1500,
+          }),
+        },
+      ],
+    };
+  });
+  const messageContainerStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateY: withTiming(messageContainerAnimation.value, {
+            duration: 1200,
+          }),
+        },
+      ],
+    };
+  });
+
   return (
     <View style={styles.container}>
-      <Animated.View style={styles.imageContainer}>
+      <Animated.View style={[styles.imageContainer, animateImageStyle]}>
         <Image
           source={require("../assets/images/launch.png")}
           style={styles.img}
         />
       </Animated.View>
 
-      <Animated.View style={styles.gradientContainer}>
+      <Animated.View style={[styles.gradientContainer, messageContainerStyle]}>
         <LinearGradient colors={bottomColors} style={styles.gradient}>
-          <View>
+          <View style={styles.textContainer}>
             <CustomText fontSize={34} fontFamily={Fonts.Theme}>
               BAYMAX!
             </CustomText>
@@ -31,6 +76,9 @@ const SplashScreen = () => {
               autoPlay={true}
               loop
             />
+            <CustomText>
+              Synchronizing best configurations for you...
+            </CustomText>
           </View>
         </LinearGradient>
       </Animated.View>
@@ -44,6 +92,17 @@ const styles = StyleSheet.create({
     height: "35%",
     bottom: 0,
     width: "100%",
+  },
+  textContainer: {
+    backgroundColor: "white",
+    flex: 1,
+    borderRadius: 20,
+    padding: 20,
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 1,
+    shadowRadius: 2,
+    alignItems: "center",
+    shadowColor: Colors.border,
   },
   gradient: {
     paddingTop: 30,
