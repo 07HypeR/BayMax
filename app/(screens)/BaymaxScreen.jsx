@@ -3,7 +3,7 @@ import React from "react";
 
 const BaymaxScreen = () => {
   return (
-    <View className=" flex-1 items-center justify-center">
+    <View>
       <Text>BaymaxScreen</Text>
     </View>
   );

@@ -5,7 +5,7 @@ import Animated from "react-native-reanimated";
 
 const SplashScreen = () => {
   return (
-    <View className="flex-1 items-center justify-center  bg-primary">
+    <View>
       <Animated.View>
         <Image source={require("../assets/images/launch.png")} />
       </Animated.View>
