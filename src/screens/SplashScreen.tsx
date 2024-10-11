@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet, Image} from 'react-native';
 import React, {FC, useEffect} from 'react';
 import {TouchableOpacity} from 'react-native';
-import {navigate} from '../utils/NavigationUtils';
+import {navigate, resetAndNavigate} from '../utils/NavigationUtils';
 import {screenHeight, screenWidth} from '../utils/Scaling';
 import {Colors, Fonts, lightColors} from '../utils/Constants';
 import Animated, {
@@ -26,6 +26,10 @@ const SplashScreen: FC = () => {
       baymaxAnimation.value = -screenHeight * 0.02;
       Tts.speak('Hello World! I am Baymax.');
     }, 600);
+
+    setTimeout(() => {
+      resetAndNavigate('BaymaxScreen');
+    }, 4000);
   };
 
   useEffect(() => {
