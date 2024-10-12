@@ -1,4 +1,4 @@
-import {View, Text, TextStyle, StyleSheet} from 'react-native';
+import {Text, TextStyle, StyleSheet} from 'react-native';
 import React from 'react';
 import {Colors, Fonts} from '../../utils/Constants';
 import {RFValue} from 'react-native-responsive-fontsize';

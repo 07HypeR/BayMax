@@ -36,3 +36,18 @@ export const initializeTtsListeners = async () => {
     console.log('TTS Cancel: ', event);
   });
 };
+
+export const playTTS = async (message: string) => {
+  Tts.getInitStatus().then(
+    () => {
+      console.log('ALL OK TTS ✅');
+    },
+    err => {
+      if (err.code === 'no_engine') {
+        console.log('NO TTS ENGINE ❌ ');
+        Tts.requestInstallEngine();
+      }
+    },
+  );
+  Tts.speak(message);
+};

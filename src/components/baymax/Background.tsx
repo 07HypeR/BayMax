@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Image, Animated} from 'react-native';
+import {View, StyleSheet, Image, Animated} from 'react-native';
 import React, {FC} from 'react';
 import {screenHeight, screenWidth} from '../../utils/Scaling';
 import {BlurView} from '@react-native-community/blur';

@@ -11,9 +11,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import LinearGradient from 'react-native-linear-gradient';
 import LottieView from 'lottie-react-native';
-import {initializeTtsListeners} from '../utils/ttsListeners';
+import {initializeTtsListeners, playTTS} from '../utils/ttsListeners';
 import Tts from 'react-native-tts';
 import CustomText from '../components/global/CustomText';
+import {playSound} from '../utils/voiceUtils';
 
 const bottomColors = [...lightColors].reverse();
 const SplashScreen: FC = () => {
@@ -22,9 +23,10 @@ const SplashScreen: FC = () => {
 
   const launchAnimation = async () => {
     messageContainerAnimation.value = screenHeight * 0.001;
+    playSound('ting2');
     setTimeout(() => {
       baymaxAnimation.value = -screenHeight * 0.02;
-      Tts.speak('Hello World! I am Baymax.');
+      playTTS('Hello World! I am Baymax.');
     }, 600);
 
     setTimeout(() => {
