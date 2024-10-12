@@ -2,6 +2,7 @@ import {View, Text, StyleSheet, Animated} from 'react-native';
 import React, {FC, useEffect, useRef} from 'react';
 import {screenHeight, screenWidth} from '../../utils/Scaling';
 import {bigHero6Data} from '../../utils/data';
+import Water from '../options/Water';
 
 const BigHero6: FC<{onPress: (type: string) => void}> = ({onPress}) => {
   const animatedValues = useRef(
@@ -47,7 +48,8 @@ const BigHero6: FC<{onPress: (type: string) => void}> = ({onPress}) => {
               },
             ]}
             key={index}>
-            <Text>anything</Text>
+            {item !== 'water' && <Text>anything</Text>}
+            {item === 'water' && <Water />}
           </Animated.View>
         );
       })}
