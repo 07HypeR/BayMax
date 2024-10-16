@@ -34,6 +34,7 @@ const Instructions: FC<{
                 fontFamily: Fonts.Theme,
                 padding: 20,
                 fontSize: RFValue(22),
+                color: '#000',
               },
             }}>
             {message}
