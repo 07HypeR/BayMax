@@ -8,6 +8,9 @@ import {playTTS} from '../utils/ttsListeners';
 import SoundPlayer from 'react-native-sound-player';
 import {playSound} from '../utils/voiceUtils';
 import {prompt} from '../utils/data';
+import Instructions from '../components/baymax/Instructions';
+import Pedometer from '../components/pedometer/Pedometer';
+import {askAI} from '../service/apiService';
 
 const BaymaxScreen = () => {
   const [showInstructions, setShowInstructions] = useState(false);
@@ -52,6 +55,8 @@ const BaymaxScreen = () => {
     promptText: string,
     sound: string,
   ) => {
+    setShowLoader(true);
+
     try {
       if (type === 'meditation') {
         playTTS('Focus on your breath!');
@@ -60,7 +65,19 @@ const BaymaxScreen = () => {
         return;
       }
 
-      setShowLoader(true);
+      const data = await askAI(promptText);
+      setMessage(data);
+      playTTS(data);
+      if (type == 'happiness') {
+        setTimeout(() => {
+          playSound(sound);
+        }, 5000);
+      } else {
+        playSound(sound);
+      }
+
+      setMessage(type);
+      unBlur();
     } catch (error: any) {
       handleError(error);
     } finally {
@@ -80,7 +97,7 @@ const BaymaxScreen = () => {
         handleResponse(type, prompt.joke, 'laugh');
         break;
       case 'motivation':
-        handleResponse(type, prompt.motivation, 'motivationh');
+        handleResponse(type, prompt.motivation, 'motivation');
         break;
       case 'health':
         handleResponse(type, prompt.health, 'meditation');
@@ -95,6 +112,32 @@ const BaymaxScreen = () => {
 
   return (
     <View style={styles.container}>
+      {message && (
+        <Instructions
+          onCross={() => {
+            startBlur();
+            setMessage('');
+            setShowLoader(true);
+            SoundPlayer.stop();
+            setShowInstructions(false);
+          }}
+          message={message}
+        />
+      )}
+      {showPedometer && (
+        <Pedometer
+          onCross={() => {
+            startBlur();
+            setMessage('');
+            setShowPedometer(false);
+            setShowLoader(true);
+            SoundPlayer.stop();
+            setShowInstructions(false);
+          }}
+          message={message}
+        />
+      )}
+
       {showLoader && (
         <View style={styles.loaderContainer}>
           <Loading />
