@@ -76,4 +76,4 @@ yarn-error.log
 
 
 # Api
-.service/
+./src/service/API.tsx
