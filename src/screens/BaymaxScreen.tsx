@@ -75,8 +75,6 @@ const BaymaxScreen = () => {
       } else {
         playSound(sound);
       }
-
-      setMessage(type);
       unBlur();
     } catch (error: any) {
       handleError(error);
