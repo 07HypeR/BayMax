@@ -2,8 +2,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.stepcounter">
+
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.BODY_SENSORS_BACKGROUND" />
 
@@ -13,7 +12,7 @@
     <uses-feature
      android:name="android.hardware.sensor.accelerometer"
      android:required="true" />
- </manifest>
+
 
     <application
       android:name=".MainApplication"
