@@ -1,9 +1,22 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import {View, Text, StatusBar} from 'react-native';
+import React, {useEffect} from 'react';
 import Navigation from './src/navigation/Navigation';
+import {requestPermisssion} from './src/notification/notificationPermission';
 
 const App = () => {
-  return <Navigation />;
+  const permissionChecks = async () => {
+    requestPermisssion();
+  };
+
+  useEffect(() => {
+    permissionChecks();
+  }, []);
+  return (
+    <>
+      <Navigation />
+      <StatusBar hidden />
+    </>
+  );
 };
 
 export default App;
