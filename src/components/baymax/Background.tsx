@@ -12,6 +12,7 @@ const Background: FC<{blurOpacity: any}> = ({blurOpacity}) => {
       />
       <Animated.View style={[styles.absolute, {opacity: blurOpacity}]}>
         <BlurView
+          reducedTransparencyFallbackColor="white"
           style={styles.absolute}
           blurType="ultraThinMaterial"
           blurAmount={2}
