@@ -55,3 +55,28 @@ export const displayNotification = async (
     },
   });
 };
+
+export const setCategories = async () => {
+  await notifee.setNotificationCategories([
+    {
+      id: 'water-intake',
+      actions: [
+        {
+          id: 'water-intake',
+          title: 'Okay',
+          foreground: true,
+        },
+      ],
+    },
+    {
+      id: 'drink-action',
+      actions: [
+        {
+          id: 'drink-action',
+          title: 'I Drink Water',
+          foreground: true,
+        },
+      ],
+    },
+  ]);
+};
