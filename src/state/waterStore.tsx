@@ -1,7 +1,7 @@
 import {create} from 'zustand';
 import {createJSONStorage, persist} from 'zustand/middleware';
 import {mmkvStorage} from './storage';
-import {displayNotification} from '../notification/notificationInnitial';
+import {displayNotification} from '../notification/notificationInitial';
 
 interface WaterStore {
   waterDrinkStamps: string[];
