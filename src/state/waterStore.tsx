@@ -1,6 +1,7 @@
 import {create} from 'zustand';
 import {createJSONStorage, persist} from 'zustand/middleware';
 import {mmkvStorage} from './storage';
+import {displayNotification} from '../notification/notificationInnitial';
 
 interface WaterStore {
   waterDrinkStamps: string[];
@@ -15,6 +16,12 @@ export const useWaterStore = create<WaterStore>()(
       addWaterIntake: timestamp => {
         const waterDrinkStamps = [...get().waterDrinkStamps, timestamp];
         set({waterDrinkStamps});
+        displayNotification(
+          `Water Intake ${waterDrinkStamps.length}/8`,
+          'Stay Hydrated💧',
+          require('../assets/images/water.png'),
+          'water-intake',
+        );
       },
       resetWaterIntake: () => {
         set({waterDrinkStamps: []});

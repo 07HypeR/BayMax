@@ -13,7 +13,7 @@ noitifee.onForegroundEvent(({type, detail}) => {
   }
 });
 
-noitifee.onForegroundEvent(async ({type, detail}) => {
+noitifee.onBackgroundEvent(async ({type, detail}) => {
   console.log(type);
   console.log(detail);
   if (
