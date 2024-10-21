@@ -72,7 +72,7 @@ export const createTimeStampNotification = async (
   body: string,
   hour: number,
   minute: number,
-  notificationId: string,
+  notificationID: string,
 ) => {
   const now = new Date();
   const triggerDate = new Date();
@@ -100,7 +100,7 @@ export const createTimeStampNotification = async (
 
   await notifee.createTriggerNotification(
     {
-      id: notificationId,
+      id: notificationID,
       title,
       body,
       android: {

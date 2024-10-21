@@ -1,6 +1,6 @@
-import noitifee, {EventType} from '@notifee/react-native';
+import notifee, {EventType} from '@notifee/react-native';
 
-noitifee.onForegroundEvent(({type, detail}) => {
+notifee.onForegroundEvent(({type, detail}) => {
   switch (type) {
     case EventType.ACTION_PRESS:
       if (detail.pressAction?.id === 'drink-action') {
@@ -13,7 +13,7 @@ noitifee.onForegroundEvent(({type, detail}) => {
   }
 });
 
-noitifee.onBackgroundEvent(async ({type, detail}) => {
+notifee.onBackgroundEvent(async ({type, detail}) => {
   console.log(type);
   console.log(detail);
   if (
