@@ -33,6 +33,7 @@ export const displayNotification = async (
           title: 'Okay',
           pressAction: {
             id: categoryId,
+            launchActivity: 'default',
           },
         },
       ],
