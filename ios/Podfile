@@ -5,6 +5,9 @@ require Pod::Executable.execute_command('node', ['-p',
     {paths: [process.argv[1]]},
   )', __dir__]).strip
 
+use_frameworks! :linkage => :static
+$RNFirebaseAsStaticFramework = true
+
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
