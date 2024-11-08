@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "483671461424",
-    "project_id": "baymax-4d390",
-    "storage_bucket": "baymax-4d390.appspot.com"
+    "project_number": "689431451497",
+    "project_id": "fitness-1f5c0",
+    "storage_bucket": "fitness-1f5c0.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:483671461424:android:f8fe092d9be702eb2a67f5",
+        "mobilesdk_app_id": "1:689431451497:android:547fc2ccdab17a7f324ff8",
         "android_client_info": {
-          "package_name": "com.baymax"
+          "package_name": "com.fitness"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCHRcdDMoYRBNrL9dbq5X3dlpJSXQpxMLI"
+          "current_key": "AIzaSyDvZ3YD-Ct2pJGLprVjHwugLgWjedgwsmo"
         }
       ],
       "services": {
